@@ -5,6 +5,7 @@
 let hiddenNumber = Math.trunc(Math.random() * 20) + 1;
 
 let score = 20;
+let highscore = 0;
 
 const guess = function () {
   console.log(Number(document.querySelector(".guess").value));
@@ -23,6 +24,12 @@ document.querySelector(".check").addEventListener("click", function () {
     document.querySelector(".number").textContent = hiddenNumber;
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem";
+    document.querySelector(".highscore").textContent = highscore + 1;
+
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector(".highscore").textContent = highscore;
+    }
   } else if (guess > hiddenNumber) {
     if (score > 1) {
       document.querySelector(".message").textContent = "To high! ";
